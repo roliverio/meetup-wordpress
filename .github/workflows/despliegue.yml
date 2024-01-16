@@ -25,14 +25,20 @@ jobs:
     steps:
       - name: Hacer checkout del repo
         uses: actions/checkout@v2
-      - name: Copiar contenido del directorio de manera recursiva al servidor remoto
-        uses: garygrossgarten/github-action-scp@release #Accion que estamos importando
+      - name: Copiar contenido del directorio de manera recursiva al servidor remot
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          local: ./ #Directorio local a copiar
-          remote: /var/www/meetup-wp # Directorio destino
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
-          privateKey: ${{ secrets.PRIVATE_KEY}}
-          dotfiles: true
+          server: ${{ secrets.HOST }}
+          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          local_path: './*'
+          remote_path: '/var/www/meetup-wp'
+          sftpArgs: '-o ConnectTimeout=5'
+      - name: multiple command
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: sudo /usr/local/bin/fix-perms.sh
