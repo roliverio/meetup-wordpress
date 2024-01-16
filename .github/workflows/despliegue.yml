@@ -5,9 +5,8 @@ on:
   # Se ejecuta al hacer push a la rama especificada
   push:
     branches: ["master"]
-
-# Le permite ejecutar el workflow manualmente desde la pestaña de acciones.
-workflow_dispatch:
+  # Le permite ejecutar el workflow manualmente desde la pestaña de acciones.
+  workflow_dispatch:
 
 # Permitir solo una ejecución concurrente, saltando ejecuciones que se encolen entre la ejecución en progreso
 # y la última encolada, además, no cancelar ninguna ejecución en progreso ya que queremos que cada ejecución
