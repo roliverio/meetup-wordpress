@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Workflow sencillo para despliegue con una copia básica
 name: "Desplegar a WP: meetup-wp.ortegamartinez.me"
 
 on:
