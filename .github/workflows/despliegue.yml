@@ -31,10 +31,11 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           server: ${{ secrets.HOST }}
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
           local_path: './*'
           remote_path: '/var/www/meetup-wp'
           sftpArgs: '-o ConnectTimeout=5'
-      - name: multiple command
+      - name: Corregir Permisos
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
