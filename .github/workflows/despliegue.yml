@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  copiar:
     runs-on: ubuntu-latest
     env:
     # Algunas variables de entorno que podríamos necesitar durante la ejecución (estos son solo ejemplos)
